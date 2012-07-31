@@ -26,26 +26,44 @@ function ConverterController($scope){
 			},
 		},
 		movn: {
-			replace: /movn (..)\,(........)/i,
+			replace: /movn (..)\,([0-9a-fA-F]{1,8})/i,
 			"with": function(vars){
 				return {
 					OpBits: "0010",
 					Drain: op.reg(vars[1]),
 					Source: "00",
-					Alu: "000000",
+					Alu: op.num(vars[2]),
 				}
 			}
 		}
 	}
 	$scope.meta = {
 		reg: function(a){
-			return op.regs[a]
+			return (op.regs[a] || "??");
 		},
 		regs: {
 			ax: "00",
 			bx: "01",
 			cx: "10",
 			dx: "11",
+		},
+		num: function(a){
+			if(a.match(/[01]{1,8}/i)){
+				return op.binnum(a);
+			}else if(a.match(/[0-9]{1,8}/i)){
+				return op.decnum(a);
+			}else if(a.match(/[0-9a-fA-F]{1,2}/i)){
+				return op.hexnum(a);
+			};
+		},
+		hexnum: function(a){
+			return parseInt(a, 16).toString(2)
+		},
+		binnum: function(a){
+			return a;
+		},
+		decnum: function(a){
+			return parseInt(a).toString(2);
 		}
 	}
 	var op = $scope.meta;
@@ -60,7 +78,7 @@ function ConverterController($scope){
 	$scope.convertLine = function(line){
 		for(i in $scope.op){
 			var exp = $scope.op[i]
-			if(line.match(exp.replace)){
+			if(typeof line == 'string' && line.match(exp.replace)){
 				var RegExpOutp = exp.replace.exec(line);
 				line = exp.with(RegExpOutp);
 			}

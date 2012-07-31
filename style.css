@@ -1,0 +1,42 @@
+div[role="main"] > *{
+  width: 50%;
+	padding: 10px;
+	float: left;
+	font-size: 28px;
+	font-family: helvetica;
+	background: black;
+	color: #00ff00;
+	resize: none;
+}
+* {
+	box-sizing: border-box;
+}
+html, body, div[role="main"], div[role="main"] > *{
+	height: 100%;
+	margin: 0;
+	border: none;
+}
+div[role="main"] > div{
+	background: grey;
+	color: black;
+}
+div[role="main"] > div .line{
+	background: white;
+}
+div[role="main"] > div .line > *{
+	margin: 0 0.5em;
+	padding: 0 0.2em;
+}
+div[role="main"] > div .line .OpBits{
+	background: blue;
+	
+}
+div[role="main"] > div .line .Drain{
+	background: orange;
+}
+div[role="main"] > div .line .Source{
+	background: red;
+}
+div[role="main"] > div .line .Alu{
+	background: limegreen;
+}
