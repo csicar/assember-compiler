@@ -41,12 +41,12 @@ var converter = (function(){
 				  '</span>',
 		},
 		"mov n": {
-			replace: /movn (..)\,(........)/i,
+			replace: /movn (..)\,([0-9a-fA-F]{1,8})/i,
 			with: '<span class="command">'+
 					'<span class="op-bits">0010</span>'+
 					'<span class="sel-bits-1">{reg: $1}</span>'+
 					'<span class="sel-bits-2">00</span>'+
-					'<span class="alu">{reg: $2}</span>'+
+					'<span class="alu">{num: $2}</span>'+
 					'<span class="gpu">0</span>'+
 				  '</span>',
 		},
@@ -66,11 +66,27 @@ var converter = (function(){
 			replace: /\{reg: dx\}/i,
 			with: "11",
 		},
+		binnum: {
+			replace: /\{num: ([01]{8})\}/i,
+			with: "$1",
+		},
+		hexnum: {
+			replace: /\{num: ([0-9a-fA-F]{1,8})\}/i,
+			with: function(num){
+				return parseInt(num, 16)
+			},
+		},
 	};
 	function parse(string){
 		for(i in exp){
 			while(string.match(exp[i]["replace"])){
-				string = string.replace(exp[i]["replace"], exp[i]["with"]);
+				if(typeof exp[i]["with"] == 'string'){
+					string = string.replace(exp[i]["replace"], exp[i]["with"]);
+				}else{
+					var RegExpOutp = exp[i].replace.exec(string);
+					var RegExpFuncOutp = exp[i].with(RegExpOutp[1], RegExpOutp[2], RegExpOutp);
+					string = string.replace(exp[i].replace, RegExpFuncOutp);
+				};
 			};
 		};
 		return string;	
