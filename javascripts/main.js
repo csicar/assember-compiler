@@ -49,7 +49,7 @@ var converter = (function(){
 					'<span class="alu">{reg: $2}</span>'+
 					'<span class="gpu">0</span>'+
 				  '</span>',
-		}
+		},
 		ax: {
 			replace: /\{reg: ax\}/i,
 			with: "00",
