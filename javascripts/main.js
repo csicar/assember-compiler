@@ -10,6 +10,16 @@ var converter = (function(){
 					'<span class="gpu">0</span>'+
 				  '</span>',
 		},
+		mov: {
+			replace: /mov (..)\,(..)/i,
+			with: '<span class="command">'+
+					'<span class="op-bits">0101</span>'+
+					'<span class="sel-bits-1">{reg: $1}</span>'+
+					'<span class="sel-bits-2">{reg: $2}</span>'+
+					'<span class="alu">0000000</span>'+
+					'<span class="gpu">0</span>'+
+				  '</span>',
+		},
 		"no operation": {
 			replace: /no operation/i,
 			with: '<span class="command">'+
@@ -30,6 +40,16 @@ var converter = (function(){
 					'<span class="gpu">0</span>'+
 				  '</span>',
 		},
+		"mov n": {
+			replace: /movn (..)\,(........)/i,
+			with: '<span class="command">'+
+					'<span class="op-bits">0010</span>'+
+					'<span class="sel-bits-1">{reg: $1}</span>'+
+					'<span class="sel-bits-2">00</span>'+
+					'<span class="alu">{reg: $2}</span>'+
+					'<span class="gpu">0</span>'+
+				  '</span>',
+		}
 		ax: {
 			replace: /\{reg: ax\}/i,
 			with: "00",
