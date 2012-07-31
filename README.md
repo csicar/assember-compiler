@@ -4,8 +4,8 @@ assember-compiler
 an assembler to opcode compiler for minecraftmonkey 16bit cpu
 
 #usage
-+write the assember code down on the right side.
-+the output will turn into a repesentation of the input busses that you already know (color sceme etc.)
+* write the assember code down on the right side.
+* the output will turn into a repesentation of the input busses that you already know (color sceme etc.)
 
 #contribute
 
