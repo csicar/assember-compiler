@@ -13,6 +13,29 @@ function ConverterController($scope){
 				};
 			},
 		},
+		mov: {
+			replace: /mov (..),(..)/i,
+			"with": function(vars){
+				//this = main.prototype.op
+				return {
+					OpBits: "0101",
+					Drain: op.reg(vars[1]), 
+					Source: op.reg(vars[2]),
+					Alu: "00000000", 
+				};
+			},
+		},
+		movn: {
+			replace: /movn (..)\,(........)/i,
+			"with": function(vars){
+				return {
+					OpBits: "0010",
+					Drain: op.reg(vars[1]),
+					Source: "00",
+					Alu: "000000",
+				}
+			}
+		}
 	}
 	$scope.meta = {
 		reg: function(a){
