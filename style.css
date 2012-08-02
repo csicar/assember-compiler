@@ -3,7 +3,7 @@ div[role="main"] > *{
 	padding: 10px;
 	float: left;
 	font-size: 28px;
-	font-family: helvetica;
+	font-family: monospace;
 	background: black;
 	color: #00ff00;
 	resize: none;

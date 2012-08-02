@@ -36,16 +36,76 @@ function ConverterController($scope){
 				}
 			}
 		},
+		"alu enable": {
+			replace: /alu enable (.+)/i,
+			"with": function(vars){
+				return {
+					OpBits: "0110",
+					Drain: "00",
+					Source: "00",
+					Alu: op.aluSelector(vars[1]),
+				};
+			},
+		},
+		"value to": {
+			replace: /value to (..),(..)/i,
+			"with": function(vars){
+				return {
+					OpBits: op.reg[vars[1]],
+					Drain: "00",
+					Source: "00",
+					Alu: "00000000",
+				};
+			}, 
+		},
+		"ax to cx": {
+			replace: /ax to cx (..),(..)/i,
+			"with": function(){
+				return {
+					OpBits: "0100",
+					Drain: "00",
+					Source: "00",
+					Alu: "00000000",
+				};
+			},
+		},
+		"no-op": {
+			replace: /no-op (..),(..)/i,
+			"with": function(vars){
+				return {
+					OpBits: "1111",
+					Drain: "00",
+					Source: "00",
+					Alu: "00000000",
+				}
+			}
+		},
 	}
 	$scope.meta = {
 		reg: function(a){
-			return (op.regs[a] || op.regs[a.toLocaleLowerCase()] || "??");
+			return (op.regs[a.toLocaleLowerCase()] || "??");
 		},
 		regs: {
-			ax: "00",
+			ax: "10",
 			bx: "01",
-			cx: "10",
-			dx: "11",
+			ix: "11",
+			dx: "00",
+		},
+		aluSelector: function(string){
+			string = string.toLocaleLowerCase();
+			console.log(string)
+			return op.alu[string];
+		},
+		alu: {
+			add: "0000",
+			sub: "0001",
+			incdx: "0010",
+			incbx: "0011",
+			decdx: "0100",
+			decbx: "0101",
+			and: "0110",
+			xor: "0111",
+			or: "1000",
 		},
 		num: function(a){
 			if(a.match(/[01]{1,8}/i)){
@@ -64,16 +124,15 @@ function ConverterController($scope){
 		},
 		decnum: function(a){
 			return parseInt(a).toString(2);
-		}
+		},
 	}
 	var op = $scope.meta;
 	$scope.update = function(){
 		$scope.lines = $scope.text.split('\n');
-		console.log("asd")
 		for (var i = 0; i < $scope.lines.length; i++) {
 			$scope.lines[i] = $scope.convertLine($scope.lines[i]);
 		};
-		console.log($scope.lines);
+		//console.log($scope.lines);
 	};
 	$scope.convertLine = function(line){
 		for(i in $scope.op){
