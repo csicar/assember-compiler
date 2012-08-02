@@ -35,11 +35,11 @@ function ConverterController($scope){
 					Alu: op.num(vars[2]),
 				}
 			}
-		}
+		},
 	}
 	$scope.meta = {
 		reg: function(a){
-			return (op.regs[a] || "??");
+			return (op.regs[a] || op.regs[a.toLocaleLowerCase()] || "??");
 		},
 		regs: {
 			ax: "00",
@@ -73,7 +73,7 @@ function ConverterController($scope){
 		for (var i = 0; i < $scope.lines.length; i++) {
 			$scope.lines[i] = $scope.convertLine($scope.lines[i]);
 		};
-		console.log($scope.lines)
+		console.log($scope.lines);
 	};
 	$scope.convertLine = function(line){
 		for(i in $scope.op){
@@ -85,5 +85,4 @@ function ConverterController($scope){
 		};
 		return line;
 	}
-
 }
