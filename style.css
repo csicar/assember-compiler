@@ -33,6 +33,7 @@ div[role="main"] *{
 }
 div[role="main"] >*{
 	padding-top: 10px;
+	overflow: auto;
 }
 div[role="main"] >div{
     box-shadow: inset 0px 0px 10px #ccc;

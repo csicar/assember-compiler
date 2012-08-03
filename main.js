@@ -2,6 +2,10 @@ $("#reveal").click(function(){
 	$("#doc").reveal();
 	//$("#reveal").toggleClass("active")
 });
+$("div[role='main'] > div").scroll(function(){
+	var pos = $("div[role='main'] > textarea")[0].scrollTop
+	$("div[role='main']").scrollTo(0, pos)
+})
 function ConverterController($scope){
 	$scope.lines = [];
 	$scope.text = (localStorage["opts"] || "");
