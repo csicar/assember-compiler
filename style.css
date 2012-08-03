@@ -16,16 +16,14 @@ html, body, div[role="main"] > *{
 	color: white !important;
 	font-size: 1.1em;
 }
-.nav-bar #reveal:hover {
+.nav-bar #reveal:hover, .nav-bar #reveal.active {
 	-webkit-transform: rotateZ(180deg);
 }
 .nav-bar .right {
 	float: right;
 }
-.nav-bar img, .nav-bar .img-a {
-height: 37px;
-width: 69px;
-padding: 0 1px !important;
+.forkme img{
+	z-index: 1;
 }
 div[role="main"] *{
 	font-size: 30px;

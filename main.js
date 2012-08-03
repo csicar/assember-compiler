@@ -1,6 +1,7 @@
 $("#reveal").click(function(){
 	$("#doc").reveal();
-})
+	//$("#reveal").toggleClass("active")
+});
 function ConverterController($scope){
 	$scope.lines = [];
 	$scope.text = (localStorage["opts"] || "");
@@ -150,3 +151,24 @@ function ConverterController($scope){
 	};
 	$scope.update();
 }
+/*{
+	mov: {
+		replace: /mov (..),(..)/i,
+		"with": {
+			OpBits: "mov",
+			Drain: {
+				"10": {
+					when: "$1", 
+					matches: "ax",
+				}
+				"01": {
+					when: "$1",
+					matches: ["bx", "cx"],
+				}
+			}
+			Alu: {
+
+			}
+		}
+	}
+}*/
