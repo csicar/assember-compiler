@@ -48,10 +48,10 @@
   	<textarea class="five columns" ng-model="text" placeholder="mov ax,bx" ng-change="update()" value="{{text}}"></textarea>
   	<div class="six columns offset-by-one">
       <div class="line" ng-repeat="line in lines">
-        <span class="OpBits">{{line.OpBits || "----"}}</span>
-        <span class="Drain">{{line.Drain || "--"}}</span>
-        <span class="Source">{{line.Source || "--"}}</span>
-        <span class="Alu">{{line.Alu || "----"}}</span>
+        <span class="OpBits">{{line.OpBits || "????"}}</span>
+        <span class="Drain">{{line.Drain || "??"}}</span>
+        <span class="Source">{{line.Source || "??"}}</span>
+        <span class="Alu">{{line.Alu || "????"}}</span>
       </div>
     </div>
   </div>
