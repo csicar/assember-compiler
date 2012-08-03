@@ -20,7 +20,7 @@
   <meta name="viewport" content="width=device-width">
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
-
+  <link rel="stylesheet" href="fd/stylesheets/foundation.css">
   <link rel="stylesheet" href="style.css">
 
 
@@ -33,16 +33,17 @@
   <script src="modernizr.js"></script>
 
 </head>
-<body>
+<body ng-app>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-  <header>
-
-  </header>
-  <div role="main" class="main" ng-app ng-controller="ConverterController">
-  	<textarea ng-model="text" placeholder="mov ax,bx" ng-change="update()"></textarea>
-  	<div>
+  <ul class="nav-bar">
+    <li class="name"><a href="#">Assembler Compiler</a></li>
+    <li class="right"><a id="reveal">?</a></li>
+  </ul>
+  <div role="main" class="main row" ng-controller="ConverterController">
+  	<textarea class="six columns" ng-model="text" placeholder="mov ax,bx" ng-change="update()" value="{{text}}"></textarea>
+  	<div class="six columns">
       <div class="line" ng-repeat="line in lines">
         <span class="OpBits">{{line.OpBits || "----"}}</span>
         <span class="Drain">{{line.Drain || "--"}}</span>
@@ -50,10 +51,41 @@
         <span class="Alu">{{line.Alu || "----"}}</span>
       </div>
     </div>
+  </div>
+  <div id="doc" class="reveal-modal">
+    <h2>Assembler Befehle</h2>
+    <p>momentan unterstützt der Compiler folgende Befehle:</p>
 
-  <script src="http:/­/ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js">
-  </script>
+    <ul>
+      <li>MOV [Register],[Register]</li>
+      <li>CPY alias von MOV</li>
+      <li>MOVN [Register],[Zahl in Bin / Dec / Hex]</li>
+      <li>AX TO CX</li>
+      <li>VALUE TO [Register]</li>
+      <li>NO-OP</li>
+      <li>ALU ENABLE [ADD / SUB / INCDX / INCBX / DECDX / DECBX / AND / XOR / OR]</li>
+    </ul>
+    <p>Die Befehle werden über Regular Expressions gecheckt.</p>
+   
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+
+
+
+  <script src="fd/javascripts/jquery.js"></script>
   <script src="angular.js"></script>
+  <script src="fd/javascripts/foundation.js"></script>
+  <script src="fd/javascripts/jquery.foundation.reveal.js"></script>  
+  <script src="fd/javascripts/jquery.foundation.orbit.js"></script>  
+  <script src="fd/javascripts/jquery.foundation.navigation.js"></script>  
+  <script src="fd/javascripts/jquery.foundation.buttons.js"></script>  
+  <script src="fd/javascripts/jquery.foundation.tabs.js"></script>  
+  <script src="fd/javascripts/jquery.foundation.forms.js"></script>  
+  <script src="fd/javascripts/jquery.foundation.tooltips.js"></script>  
+  <script src="fd/javascripts/jquery.foundation.accordion.js"></script>  
+  <script src="fd/javascripts/jquery.placeholder.js"></script>  
+  <script src="fd/javascripts/jquery.foundation.alerts.js"></script>
+  
   <script src="main.js"></script>
 
   <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.

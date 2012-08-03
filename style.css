@@ -1,27 +1,35 @@
-div[role="main"] > *{
-  width: 50%;
-	padding: 10px;
-	float: left;
-	font-size: 28px;
-	font-family: monospace;
-	background: black;
-	color: #00ff00;
-	resize: none;
-}
-* {
-	box-sizing: border-box;
-}
-html, body, div[role="main"], div[role="main"] > *{
+html, body, div[role="main"] > *{
 	height: 100%;
-	margin: 0;
-	border: none;
+	width: 100%;
 }
-div[role="main"] > div{
-	background: grey;
-	color: black;
+.nav-bar{ -webkit-box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; -moz-box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; box-shadow: rgba(0, 0, 0, 0.098) 0px 5px 5px; border-bottom: none; 
+	background-color: #111;
+	color: #ddd;
+}
+.nav-bar #reveal {
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+	-webkit-transform: rotateZ(1deg);
+}
+.nav-bar #reveal:hover {
+	-webkit-transform: rotateZ(180deg);
+}
+.nav-bar .right {
+	float: right;
+}
+
+div[role="main"] *{
+	font-size: 30px;
+	line-height: 30px;
+}
+div[role="main"] {
+	height: 100%;
+	width: 90%;
 }
 div[role="main"] > div .line{
-	background: white;
+	/*font-family: monospace;*/
 }
 div[role="main"] > div .line > *{
 	margin: 0 0.5em;
@@ -40,3 +48,4 @@ div[role="main"] > div .line .Source{
 div[role="main"] > div .line .Alu{
 	background: limegreen;
 }
+*/

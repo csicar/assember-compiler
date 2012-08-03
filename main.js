@@ -1,5 +1,9 @@
+$("#reveal").click(function(){
+	$("#doc").reveal();
+})
 function ConverterController($scope){
 	$scope.lines = [];
+	$scope.text = localStorage["opts"];
 	$scope.op = {
 		cpy: {
 			replace: /cpy (..),(..)/i,
@@ -9,7 +13,7 @@ function ConverterController($scope){
 					OpBits: "0101",
 					Drain: op.reg(vars[1]), 
 					Source: op.reg(vars[2]),
-					Alu: "00000000", 
+					Alu: "0000", 
 				};
 			},
 		},
@@ -21,7 +25,7 @@ function ConverterController($scope){
 					OpBits: "0101",
 					Drain: op.reg(vars[1]), 
 					Source: op.reg(vars[2]),
-					Alu: "00000000", 
+					Alu: "0000", 
 				};
 			},
 		},
@@ -51,10 +55,10 @@ function ConverterController($scope){
 			replace: /value to (..),(..)/i,
 			"with": function(vars){
 				return {
-					OpBits: op.reg[vars[1]],
+					OpBits: "00"+op.reg[vars[1]],
 					Drain: "00",
 					Source: "00",
-					Alu: "00000000",
+					Alu: "0000",
 				};
 			}, 
 		},
@@ -65,7 +69,7 @@ function ConverterController($scope){
 					OpBits: "0100",
 					Drain: "00",
 					Source: "00",
-					Alu: "00000000",
+					Alu: "0000",
 				};
 			},
 		},
@@ -132,7 +136,7 @@ function ConverterController($scope){
 		for (var i = 0; i < $scope.lines.length; i++) {
 			$scope.lines[i] = $scope.convertLine($scope.lines[i]);
 		};
-		//console.log($scope.lines);
+		localStorage["opts"] = $scope.text;
 	};
 	$scope.convertLine = function(line){
 		for(i in $scope.op){
