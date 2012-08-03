@@ -6,12 +6,15 @@ html, body, div[role="main"] > *{
 	background-color: #111;
 	color: #ddd;
 }
-.nav-bar #reveal {
+.nav-bar #reveal, .nav-bar .img-a {
 	-webkit-transition: all 1s ease-in-out;
 	-moz-transition: all 1s ease-in-out;
 	-o-transition: all 1s ease-in-out;
 	transition: all 1s ease-in-out;
 	-webkit-transform: rotateZ(1deg);
+	font-weight: bold !important;
+	color: white !important;
+	font-size: 1.1em;
 }
 .nav-bar #reveal:hover {
 	-webkit-transform: rotateZ(180deg);
@@ -19,10 +22,24 @@ html, body, div[role="main"] > *{
 .nav-bar .right {
 	float: right;
 }
-
+.nav-bar img, .nav-bar .img-a {
+height: 37px;
+width: 69px;
+padding: 0 1px !important;
+-webkit-transform: rotateY(0deg);
+}	
+.nav-bar .img-a:hover {
+-webkit-transform: rotateY(360deg);
+}
 div[role="main"] *{
 	font-size: 30px;
-	line-height: 30px;
+	line-height: 40px;
+	background: #F3F3F3;
+	resize: none;
+}
+div[role="main"] >div{
+    box-shadow: inset 0px 0px 10px #ccc;
+    border-radius: 3px;
 }
 div[role="main"] {
 	height: 100%;
@@ -48,4 +65,3 @@ div[role="main"] > div .line .Source{
 div[role="main"] > div .line .Alu{
 	background: limegreen;
 }
-*/

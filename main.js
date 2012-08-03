@@ -147,5 +147,6 @@ function ConverterController($scope){
 			}
 		};
 		return line;
-	}
+	};
+	$scope.update();
 }

@@ -40,10 +40,15 @@
   <ul class="nav-bar">
     <li class="name"><a href="#">Assembler Compiler</a></li>
     <li class="right"><a id="reveal">?</a></li>
+    <li class="right">
+      <a href="https://github.com/csicar/assember-compiler" class="img-a">
+        <img src="https://a248.e.akamai.net/assets.github.com/images/modules/footer/blacktocat.svg?ffce82fe"></img>
+      </a>
+    </li>
   </ul>
   <div role="main" class="main row" ng-controller="ConverterController">
-  	<textarea class="six columns" ng-model="text" placeholder="mov ax,bx" ng-change="update()" value="{{text}}"></textarea>
-  	<div class="six columns">
+  	<textarea class="five columns" ng-model="text" placeholder="mov ax,bx" ng-change="update()" value="{{text}}"></textarea>
+  	<div class="six columns offset-by-one">
       <div class="line" ng-repeat="line in lines">
         <span class="OpBits">{{line.OpBits || "----"}}</span>
         <span class="Drain">{{line.Drain || "--"}}</span>
