@@ -11,7 +11,7 @@ html, body, div[role="main"] > *{
 	-moz-transition: all 1s ease-in-out;
 	-o-transition: all 1s ease-in-out;
 	transition: all 1s ease-in-out;
-	-webkit-transform: rotateZ(1deg);
+	-webkit-transform: rotateZ(0deg);
 	font-weight: bold !important;
 	color: white !important;
 	font-size: 1.1em;
@@ -26,10 +26,6 @@ html, body, div[role="main"] > *{
 height: 37px;
 width: 69px;
 padding: 0 1px !important;
--webkit-transform: rotateY(0deg);
-}	
-.nav-bar .img-a:hover {
--webkit-transform: rotateY(360deg);
 }
 div[role="main"] *{
 	font-size: 30px;

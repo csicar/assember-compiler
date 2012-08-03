@@ -3,7 +3,7 @@ $("#reveal").click(function(){
 })
 function ConverterController($scope){
 	$scope.lines = [];
-	$scope.text = localStorage["opts"];
+	$scope.text = (localStorage["opts"] || "");
 	$scope.op = {
 		cpy: {
 			replace: /cpy (..),(..)/i,
